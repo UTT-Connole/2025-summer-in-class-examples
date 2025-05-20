@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Header from "./Header";
 import IngredientList from "./IngredientList";
@@ -16,7 +16,6 @@ const App = () => {
   ];
 
   const handleToggleSubtitle = () => {
-    console.log("Open subtitle clicked");
     setSubtitleOpen(true);
     setSubtitleOpen(false);
     setSubtitleOpen(17);
@@ -31,6 +30,21 @@ const App = () => {
   } else {
     subtitle = <></>;
   }
+
+  useEffect(() => {
+    fetch(
+      "https://sd-6310-2025-summer-express-app.onrender.com/api/fortune-cookie"
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Fortune cookie:", data);
+      })
+      .catch((err) => {
+        console.error("Error fetching fortune cookie:", err);
+      });
+  }, []);
 
   const recipeRef = useRef(null);
 
@@ -50,7 +64,6 @@ const App = () => {
 
       <JumpToRecipeButton
         handleClickFunction={() => {
-          console.log(2);
           recipeRef.current.scrollIntoView({
             behavior: "smooth",
             block: "start",
