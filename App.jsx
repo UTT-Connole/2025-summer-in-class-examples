@@ -1,6 +1,6 @@
-import Header from './Header';
-import IngredientList from './IngredientList';
-import JumpToRecipeButton from './JumpToRecipeButton';
+import Header from './components/Header';
+import IngredientList from './components/IngredientList';
+import JumpToRecipeButton from './components/JumpToRecipeButton';
 
 import {useState, useRef} from 'react';
 
@@ -11,6 +11,7 @@ const App = () => {
 
     const counterRef = useRef(0);
 
+    
     const recipeRef = useRef(null);
 
     const ingredients = [
@@ -35,17 +36,6 @@ const App = () => {
     }
 
 
-
-
-
-    let subtitle
-    if (subtitleOpen) {
-        subtitle = <h4> Subtitle</h4>
-    }
-    else{
-        subtitle = <></>
-    }
-
     const title = "Hello";
     return (
         <>
@@ -56,11 +46,7 @@ const App = () => {
         <Header title="New York Cheesecake" color="red"/>
         <IngredientList ingredients={ingredients}/>
 
-        {subtitle}
-
         {subtitleOpen && <h4>Subtitle</h4>}
-        {subtitleOpen ? <h4>Subtitle</h4> : <></>}
-
         <button onClick={handleToggleSubtitle}>Toggle Subtitle </button>
 
         <JumpToRecipeButton handleClickFunction={()=>{
