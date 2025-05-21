@@ -1,7 +1,6 @@
 
 const IngredientList = ({ ingredients=[] }) => {
 
-    console.log(ingredients);
     return (
         <div>
             <h2>Ingredients</h2>

@@ -2,12 +2,16 @@ import Header from './Header';
 import IngredientList from './IngredientList';
 import JumpToRecipeButton from './JumpToRecipeButton';
 
-import {useState} from 'react';
+import {useState, useRef} from 'react';
 
 const App = () => {
 
     const [subtitleOpen, setSubtitleOpen] = useState(false);
     const [counter, setCounter] = useState(0);
+
+    const counterRef = useRef(0);
+
+    const recipeRef = useRef(null);
 
     const ingredients = [
         'Cream Cheese',
@@ -18,13 +22,19 @@ const App = () => {
 
     const handleToggleSubtitle = () => {
         console.log('Open subtitle clicked');
-        setSubtitleOpen(true);
-        setSubtitleOpen(false);
-        setSubtitleOpen(17)
-        setSubtitleOpen("hello")
+        setSubtitleOpen(!subtitleOpen);
 
+        console.log("state counter: ", counter)
+        console.log("ref counter: ", counterRef.current)
         setCounter((prevCounter) => prevCounter + 1);
+        
+        counterRef.current = counterRef.current + 1;
+        console.log("state counter: ", counter)
+        console.log("ref counter: ", counterRef.current)
+        
     }
+
+
 
 
 
@@ -40,6 +50,9 @@ const App = () => {
     return (
         <>
         <h1>{ title }</h1>
+
+        <h2>Counter: {counter}</h2>
+        <h2>Counter Ref: {counterRef.current}</h2>
         <Header title="New York Cheesecake" color="red"/>
         <IngredientList ingredients={ingredients}/>
 
@@ -50,11 +63,22 @@ const App = () => {
 
         <button onClick={handleToggleSubtitle}>Toggle Subtitle </button>
 
-        <JumpToRecipeButton handleClickFunction={()=>{console.log(2)}}/>
+        <JumpToRecipeButton handleClickFunction={()=>{
+            recipeRef.current.scrollIntoView({ behavior: 'smooth' });
+        }}/>
+
+        <IngredientList ingredients={ingredients}/>
+        <IngredientList ingredients={ingredients}/>
+        <IngredientList ingredients={ingredients}/>
+        <IngredientList ingredients={ingredients}/>
+        <IngredientList ingredients={ingredients}/>
+        <IngredientList ingredients={ingredients}/>
+
         <Header title="Basque"/>
         <IngredientList />
         <Header title="Peaches" ingredients={["peaches"]}/>
         <IngredientList/>
+        <div ref={recipeRef}>Recipe</div>
         <Header title="Pie"/>
         <IngredientList/>
         </>
