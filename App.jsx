@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import IngredientList from './components/IngredientList';
 import JumpToRecipeButton from './components/JumpToRecipeButton';
+import SendMessage from './components/SendMessage';
 
 import {useState, useRef} from 'react';
 
@@ -44,6 +45,7 @@ const App = () => {
         <h2>Counter: {counter}</h2>
         <h2>Counter Ref: {counterRef.current}</h2>
         <Header title="New York Cheesecake" color="red"/>
+        <SendMessage/>
         <IngredientList ingredients={ingredients}/>
 
         {subtitleOpen && <h4>Subtitle</h4>}
