@@ -2,6 +2,7 @@ import Header from './components/Header';
 import IngredientList from './components/IngredientList';
 import JumpToRecipeButton from './components/JumpToRecipeButton';
 import SendMessage from './components/SendMessage';
+import Fortune from './components/Fortune';
 
 import {useState, useRef} from 'react';
 
@@ -33,7 +34,6 @@ const App = () => {
         counterRef.current = counterRef.current + 1;
         console.log("state counter: ", counter)
         console.log("ref counter: ", counterRef.current)
-        
     }
 
 
@@ -44,6 +44,7 @@ const App = () => {
 
         <h2>Counter: {counter}</h2>
         <h2>Counter Ref: {counterRef.current}</h2>
+        <Fortune/>
         <Header title="New York Cheesecake" color="red"/>
         <SendMessage/>
         <IngredientList ingredients={ingredients}/>
