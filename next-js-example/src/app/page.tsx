@@ -3,11 +3,19 @@ import Box from "./ui/box";
 
 import Link from "next/link"
 
-export default function Home() {
+export default async function Home() {
+
+
+    
+    console.log(process.env.URL)
+    let quote = ""
+    const response = await fetch("http://localhost:3000/api/movies")
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <h1>BRAYDEN WAS HERE</h1>
+        <h1>Quote: {quote}</h1>
         <h1>Gilbert WAS also HERE</h1>
         <Box/>
         <Box><div>Child</div></Box>
