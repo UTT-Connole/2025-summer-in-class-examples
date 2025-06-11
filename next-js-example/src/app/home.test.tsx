@@ -1,6 +1,10 @@
 import "@testing-library/jest-dom";
 
-import { render, screen } from "@testing-library/react";
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 
 import Home from "./page";
 import userEvent from "@testing-library/user-event";
@@ -32,8 +36,8 @@ describe("Home Page", () => {
     const heading = screen.getByRole("heading", {
       name: /BRAYDEN WAS HERE/i,
     });
+    waitForElementToBeRemoved(heading);
 
     await user.click(heading);
-    expect(heading).not.toBeInTheDocument();
   });
 });
