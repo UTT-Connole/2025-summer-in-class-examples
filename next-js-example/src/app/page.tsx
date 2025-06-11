@@ -1,24 +1,29 @@
-import Image from "next/image";
 import Box from "./ui/box";
-
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
+import RemoveableHeader from "./ui/RemoveableHeader";
 
 export default async function Home() {
-
-
-    
-    console.log(process.env.URL)
-    let quote = ""
-    const response = await fetch("http://localhost:3000/api/movies")
+  // console.log(process.env.URL);
+  const quote = "";
+  let response;
+  try {
+    response = await fetch("http://localhost:3000/api/movies");
+    // console.log("Response body:", response.body);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1>BRAYDEN WAS HERE</h1>
+        <RemoveableHeader />
         <h1>Quote: {quote}</h1>
         <h1>Gilbert WAS also HERE</h1>
-        <Box/>
-        <Box><div>Child</div></Box>
+        <Box />
+        <Box>
+          <div>Child</div>
+        </Box>
         <Link href="/stephen"> Stephen </Link>
         <Link href="/topher/cooper"> Cooper </Link>
         <a href="/topher"> Topher </a>
