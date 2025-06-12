@@ -1,7 +1,15 @@
+'use client';
+
+import {useState} from 'react';
+
+import DeleteableHeader from '@/app/ui/DeleteableHeader';
+
 const Stephen = () => {
+
+
   return (
     <div>
-      <h1>Stephen</h1>
+      <DeleteableHeader>Stephen</DeleteableHeader>
       <p>Stephen is a software engineer.</p>
     </div>
   );
