@@ -1,15 +1,13 @@
-import Image from "next/image";
-import Box from "./ui/box";
+import Box from "./ui/Box";
 import DeleteableHeader from "./ui/DeleteableHeader";
-
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home() {
-
-    console.log(process.env.URL)
-    let quote = ""
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    // const response = await fetch("http://localhost:3000/api/movies")
+  console.log(process.env.URL);
+  let quote = "";
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  // const response = await fetch("http://localhost:3000/api/movies")
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -17,8 +15,10 @@ export default async function Home() {
         <DeleteableHeader>BRAYDEN WAS HERE</DeleteableHeader>
         <h1>Quote: {quote}</h1>
         <h1>Gilbert WAS also HERE</h1>
-        <Box/>
-        <Box><div>Child</div></Box>
+        <Box />
+        <Box>
+          <div>Child</div>
+        </Box>
         <Link href="/stephen"> Stephen </Link>
         <Link href="/topher/cooper"> Cooper </Link>
         <a href="/topher"> Topher </a>

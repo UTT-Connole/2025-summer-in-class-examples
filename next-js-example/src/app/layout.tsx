@@ -1,7 +1,16 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+import { Geist, Geist_Mono } from "next/font/google";
+import {
+  HomeIcon,
+  ProjectIcon,
+  ReportIcon,
+  SettingsIcon,
+} from "@/app/ui/icons";
 import { inter, lusitana } from "@/app/ui/fonts";
+
+import Link from "next/link";
+import type { Metadata } from "next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,11 +34,74 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className= {`${lusitana} antialiased`}
-      >
-        <div>This is a menu</div>
-        {children}
+      <body className={`${lusitana.className} antialiased`}>
+        <div className="flex h-screen">
+          {/* Sidebar */}
+          <div className="w-64 bg-gray-800 text-white p-4 flex flex-col">
+            <div className="mb-8">
+              <h1 className="text-xl font-bold">My Application</h1>
+            </div>
+
+            <nav className="flex-1">
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/"
+                    className="flex items-center p-2 rounded hover:bg-gray-700"
+                  >
+                    <HomeIcon />
+                    <span>Dashboard</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/projects"
+                    className="flex items-center p-2 rounded hover:bg-gray-700"
+                  >
+                    <ProjectIcon />
+                    <span>Projects</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/reports"
+                    className="flex items-center p-2 rounded hover:bg-gray-700"
+                  >
+                    <ReportIcon />
+                    <span>Reports</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/settings"
+                    className="flex items-center p-2 rounded hover:bg-gray-700"
+                  >
+                    <SettingsIcon />
+                    <span>Settings</span>
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+
+            <div className="mt-auto pt-4 border-t border-gray-700">
+              <Link
+                href="/profile"
+                className="flex items-center p-2 rounded hover:bg-gray-700"
+              >
+                <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center mr-3">
+                  <span>U</span>
+                </div>
+                <div>
+                  <p className="text-sm font-medium">User Name</p>
+                  <p className="text-xs text-gray-400">user@example.com</p>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="flex-1 overflow-auto p-6">{children}</div>
+        </div>
       </body>
     </html>
   );
