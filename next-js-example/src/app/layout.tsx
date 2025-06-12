@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { inter, lusitana } from "@/app/ui/fonts";
+import { HomeIcon, ProjectsIcon, CalendarIcon, ReportsIcon, SettingsIcon } from "@/app/ui/icons";
+import { NavItem } from "@/app/ui/NavItem";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,11 +27,48 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className= {`${lusitana} antialiased`}
-      >
-        <div>This is a menu</div>
-        {children}
+      <body className={`${lusitana.className} antialiased min-h-screen`}>
+        <div className="flex h-screen">
+          {/* Sidebar / Navigation */}
+          <aside className="w-64 bg-gray-800 text-white dark:bg-sky-200">
+            <div className="p-6">
+              <h1 className="text-2xl font-bold dark:text-gray-900">My App</h1>
+            </div>
+            <nav className="mt-6">
+              <ul>
+                <NavItem 
+                  href="/" 
+                  icon={<HomeIcon />} 
+                  label="Dashboard" 
+                />
+                <NavItem 
+                  href="/projects" 
+                  icon={<ProjectsIcon />} 
+                  label="Projects" 
+                />
+                <NavItem 
+                  href="/calendar" 
+                  icon={<CalendarIcon />} 
+                  label="Calendar" 
+                />
+                <NavItem 
+                  href="/reports" 
+                  icon={<ReportsIcon />} 
+                  label="Reports" 
+                />
+                <NavItem 
+                  href="/settings" 
+                  icon={<SettingsIcon />} 
+                  label="Settings" 
+                />
+              </ul>
+            </nav>
+          </aside>
+          
+          <main className="flex-1 p-6 overflow-y-auto">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
