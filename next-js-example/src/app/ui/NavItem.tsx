@@ -11,7 +11,7 @@ export function NavItem({ href, icon, label }: NavItemProps) {
     let classes ="block py-2.5 px-6 hover:bg-gray-700 transition duration-200"
     classes += " dark:text-gray-900";
   return (
-    <li>
+    <li className="inline-block">
       <Link href={href} className={classes}>
         <div className="flex items-center space-x-2">
           {icon}
