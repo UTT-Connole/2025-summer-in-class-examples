@@ -1,57 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-interface Movie {
-  id: number;
-  title: string;
-  release_year: number;
-  genre: string;
-}
+import useMovieFormData from "@/hooks/useMovieFormData";
+import useMovies from "@/hooks/useMovies";
+import { useState } from "react";
 
 export default function MoviesPage() {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [formData, setFormData] = useState({
-    title: "",
-    release_year: "",
-    genre: "",
-  });
+  const { movies, refreshMovies } = useMovies();
+  const { formData, handleInputChange, postFormData } = useMovieFormData();
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    fetchMovies();
-  }, []);
-
-  const fetchMovies = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/movies");
-      const data = await response.json();
-      setMovies(data);
-    } catch (error) {
-      console.error("Error fetching movies:", error);
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3000/movies", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          release_year: parseInt(formData.release_year),
-        }),
-      });
-
-      if (response.ok) {
-        setFormData({ title: "", release_year: "", genre: "" });
-        fetchMovies(); // Refresh the list
-      }
+      await postFormData();
+      await refreshMovies();
     } catch (error) {
       console.error("Error adding movie:", error);
     } finally {
@@ -59,20 +23,10 @@ export default function MoviesPage() {
     }
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-8">Movies</h1>
 
-      {/* Add Movie Form */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
         <h2 className="text-xl font-semibold mb-4">Add New Movie</h2>
         <form
@@ -133,7 +87,6 @@ export default function MoviesPage() {
         </form>
       </div>
 
-      {/* Movies List */}
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h2 className="text-xl font-semibold mb-4">Movies List</h2>
         {movies.length === 0 ? (
