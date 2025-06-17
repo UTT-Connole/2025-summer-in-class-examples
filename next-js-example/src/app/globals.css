@@ -21,7 +21,9 @@ body {
 }
 
 
-
+p {
+  margin-bottom: 1rem;
+}
 /* p {
   color: red;
 }
