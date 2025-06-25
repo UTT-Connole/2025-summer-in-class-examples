@@ -1,8 +1,10 @@
 'use client';
 
-import { useState, useEffect, FormEvent } from 'react';
 import useMovies from '@/hooks/useMovies';
 import useMovieFormData from '@/hooks/useMovieFormData';
+import MovieTableHeader from '../ui/MovieTableHeader';
+import MovieTableData from '../ui/MovieTableData';
+import FormInput from '../ui/FormInput';
 
 export default function MoviesPage() {
   const {movies, moviesLoading, movieError} = useMovies();
@@ -22,66 +24,27 @@ export default function MoviesPage() {
         <h2 className="text-xl font-semibold mb-4 dark:text-black">Add New Movie</h2>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
-                Title
-              </label>
-              <input
-                type="text"
-                id="title"
-                name="title"
-                value={formData.title}
-                onChange={handleInputChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              />
-            </div>
+            <FormInput
+              value={formData.title}
+              onChange={handleInputChange}
+              title="Title"
+            />
+            <FormInput
+              value={formData.director}
+              onChange={handleInputChange}
+              title="Director"
+            />
+            <FormInput
+              value={formData.year}
+              onChange={handleInputChange}
+              title="Year"
+            />
+            <FormInput
+              value={formData.genre}
+              onChange={handleInputChange}
+              title="Genre"
+            />
             
-            <div>
-              <label htmlFor="director" className="block text-sm font-medium text-gray-700 mb-1">
-                Director
-              </label>
-              <input
-                type="text"
-                id="director"
-                name="director"
-                value={formData.director}
-                onChange={handleInputChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="year" className="block text-sm font-medium text-gray-700 mb-1">
-                Year
-              </label>
-              <input
-                type="number"
-                id="year"
-                name="year"
-                min="1900"
-                max={new Date().getFullYear() + 5}
-                value={formData.year}
-                onChange={handleInputChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="genre" className="block text-sm font-medium text-gray-700 mb-1">
-                Genre
-              </label>
-              <input
-                type="text"
-                id="genre"
-                name="genre"
-                value={formData.genre}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              />
-            </div>
           </div>
           
           <div className="mt-4">
@@ -99,20 +62,20 @@ export default function MoviesPage() {
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Director</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Genre</th>
+              <MovieTableHeader>Title</MovieTableHeader>
+              <MovieTableHeader>Director</MovieTableHeader>
+              <MovieTableHeader>Year</MovieTableHeader>
+              <MovieTableHeader>Genre</MovieTableHeader>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {movies.length > 0 ? (
               movies.map((movie) => (
                 <tr key={movie.id}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{movie.title}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{movie.director}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{movie.year}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{movie.genre || 'N/A'}</td>
+                  <MovieTableData>{movie.title}</MovieTableData>
+                  <MovieTableData>{movie.director}</MovieTableData>
+                  <MovieTableData>{movie.year}</MovieTableData>
+                  <MovieTableData>{movie.genre}</MovieTableData>
                 </tr>
               ))
             ) : (
