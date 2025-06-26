@@ -1,12 +1,11 @@
 import { Text, View, StyleSheet, ScrollView, TextInput} from "react-native";
+import {Link } from "expo-router";
 
 export default function Index() {
   return (
     <ScrollView>
-      <View
-        style={styles.view}>
-
-      <Text style={styles.text}>More interesting</Text>
+      <View style={styles.view}>
+        <Link href={{pathname: '/lora', params: {lastname: "Klein"}}}>Go to Lora Page</Link>
       <TextInput placeholder="hello everyone"></TextInput>
       <Text style={styles.text}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
