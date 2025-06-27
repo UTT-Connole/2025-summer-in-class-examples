@@ -1,12 +1,43 @@
 import { Text, View, StyleSheet, ScrollView, TextInput} from "react-native";
-import {Link } from "expo-router";
+import { useEffect, useState } from "react";
+import { Link } from "expo-router";
+import * as ScreenOrientation from 'expo-screen-orientation';
+
 
 export default function Index() {
+
+  const [orientation, setOrientation] = useState(ScreenOrientation.Orientation.UNKNOWN);
+
+  useEffect(() => {
+    const subscription = ScreenOrientation.addOrientationChangeListener((event) => {
+      console.log("Orientation changed:", event.orientationInfo.orientation);
+      setOrientation(event.orientationInfo.orientation);
+    });
+
+    return () => {
+      ScreenOrientation.removeOrientationChangeListener(subscription);
+    }
+
+  }, []);
+
+  useEffect(() => {
+    const unlock = async() => {
+      await ScreenOrientation.unlockAsync()
+      const newOrientation = await ScreenOrientation.getOrientationAsync();
+      setOrientation(newOrientation);
+    }
+    unlock();
+  }, [])
+
+  const orientationName = orientation === ScreenOrientation.Orientation.PORTRAIT_UP ? "Portrait" : "Landscape"
   return (
     <ScrollView>
+      
       <View style={styles.view}>
         <Link href={{pathname: '/lora', params: {lastname: "Klein"}}}>Go to Lora Page</Link>
       <TextInput placeholder="hello everyone"></TextInput>
+      <Text>{orientationName}</Text>
+      <Text>{orientation}</Text>
       <Text style={styles.text}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
