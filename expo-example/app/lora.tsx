@@ -1,16 +1,20 @@
-import React from 'react';
+import {useContext} from 'react';
 import { Pressable, Text, StyleSheet, ScrollView, Button} from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import {ThemeContext} from '../contexts/theme-context'; 
+import ThemeText from '../components/ThemeText';
 
 const LoraPage = () => {
+    const {theme, setTheme} = useContext(ThemeContext);
+    console.log('LoraPage theme:', theme);
     const params = useLocalSearchParams();
     console.log('LoraPage params:', params);
     return (
 
         <ScrollView contentContainerStyle={styles.container}>
-            <Pressable onPress={() => console.log("Pressable Pressed!")}>
-                <Text>I'm pressable!</Text>
+            <Pressable onPress={() => setTheme(theme === 'lightblue' ? 'red' : 'lightblue')}>
+                <Text>{theme === 'lightblue' ? 'Switch to Red' : 'Switch to Light Blue'}</Text>
             </Pressable>
 
             <FontAwesome.Button name="wifi" onPress={() => console.log("HEY!")}>Hey all</FontAwesome.Button>
@@ -19,9 +23,9 @@ const LoraPage = () => {
 
 
             <Text style={styles.title}>LoRa (Long Range)</Text>
-            <Text style={styles.paragraph}>
+            <ThemeText>
                 LoRa (Long Range) is a wireless communication technology designed for long-range, low-power, and low-data-rate applications. It is widely used in Internet of Things (IoT) networks, enabling devices to communicate over distances of several kilometers while consuming minimal power.
-            </Text>
+            </ThemeText>
             <Text style={styles.heading}>Key Features</Text>
             <Text style={styles.listItem}>• Long-range communication (up to 15 km in rural areas)</Text>
             <Text style={styles.listItem}>• Low power consumption</Text>

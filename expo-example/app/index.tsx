@@ -2,7 +2,7 @@ import { Text, View, StyleSheet, ScrollView, TextInput} from "react-native";
 import { useEffect, useState } from "react";
 import { Link } from "expo-router";
 import * as ScreenOrientation from 'expo-screen-orientation';
-
+import ThemeText from '../components/ThemeText';
 
 export default function Index() {
 
@@ -38,12 +38,12 @@ export default function Index() {
       <TextInput placeholder="hello everyone"></TextInput>
       <Text>{orientationName}</Text>
       <Text>{orientation}</Text>
-      <Text style={styles.text}>
+      <ThemeText>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
         Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
-      </Text>
+      </ThemeText>
       <Text style={styles.text}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
