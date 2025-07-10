@@ -32,51 +32,57 @@ export default function Index() {
   const orientationName = orientation === ScreenOrientation.Orientation.PORTRAIT_UP ? "Portrait" : "Landscape"
   return (
     <ScrollView>
-      
       <View style={styles.view}>
-        <Link href={{pathname: '/lora', params: {lastname: "Klein"}}}>Go to Lora Page</Link>
-        <Link href={{pathname: '/shopping-list'}}>Go to Shopping Page</Link>
-      <TextInput placeholder="hello everyone"></TextInput>
-      <Text>{orientationName}</Text>
-      <Text>{orientation}</Text>
-      <ThemeText>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
-      </ThemeText>
-      <Text style={styles.text}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
-      </Text>
-      <Text style={styles.text}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
-      </Text>
-      <Text style={styles.text}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
-      </Text>
-      <Text style={styles.text}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
-      </Text>
-      <Text style={styles.text}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
-      </Text>
+        <Link href={{pathname: '/lora', params: {lastname: "Klein"}}}>
+          <Text>Go to Lora Page</Text>
+        </Link>
+        <Link href={{pathname: '/shopping-list'}}>
+          <Text>Go to Shopping Page</Text>
+        </Link>
+        <Link href={{pathname: '/rubber-duckies'}}>
+          <Text>Go to Rubber Duckies Page</Text>
+        </Link>
+        <TextInput placeholder="hello everyone"></TextInput>
+        <Text>{orientationName}</Text>
+        <Text>{orientation}</Text>
+        <ThemeText>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
+        </ThemeText>
+        <Text style={styles.text}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
+        </Text>
+        <Text style={styles.text}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
+        </Text>
+        <Text style={styles.text}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
+        </Text>
+        <Text style={styles.text}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
+        </Text>
+        <Text style={styles.text}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamlet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          Romeo and Juliet. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Macbeth.
+        </Text>
       </View>
-      </ScrollView>
+    </ScrollView>
   );
 }
 
