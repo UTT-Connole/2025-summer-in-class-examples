@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Button } from 'react-native';
 import validateField from '@/utils/validateField';
+
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 interface ValidationErrors {
   name?: string;
@@ -58,12 +60,20 @@ export default function RubberDuckies() {
     ];
   };
 
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.formContainer}>
         <Text style={styles.title}>Add Your Rubber Ducky</Text>
         <Text style={styles.subtitle}>Tell us about your favorite rubber ducky!</Text>
+        <Button title="Open Date Picker" ></Button>
+        <DateTimePicker
+          mode="date"
+          value={new Date()} 
+          onChange = {(change) => console.log(change)}
+          />
 
+        
         <View style={styles.fieldContainer}>
           <Text style={styles.label}>Ducky Name *</Text>
           <TextInput

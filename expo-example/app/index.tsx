@@ -4,9 +4,15 @@ import { Link } from "expo-router";
 import * as ScreenOrientation from 'expo-screen-orientation';
 import ThemeText from '../components/ThemeText';
 
+import * as Crypto from 'expo-crypto';
+
+
 export default function Index() {
 
   const [orientation, setOrientation] = useState(ScreenOrientation.Orientation.UNKNOWN);
+
+  const uuid = Crypto.randomUUID();
+  console.log("Generated UUID:", uuid);
 
   useEffect(() => {
     const subscription = ScreenOrientation.addOrientationChangeListener((event) => {
