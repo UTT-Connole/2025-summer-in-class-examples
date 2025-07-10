@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Button } from 'react-native';
+import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Button, Image } from 'react-native';
 import validateField from '@/utils/validateField';
 
 import DateTimePicker from "@react-native-community/datetimepicker";
+
+import * as ImagePicker from 'expo-image-picker';
+
 
 interface ValidationErrors {
   name?: string;
@@ -60,6 +63,15 @@ export default function RubberDuckies() {
     ];
   };
 
+  const openImagePicker = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ["images"],
+      aspect: [1,1],
+      allowsEditing: true,
+    })
+    console.log(result.assets[0].uri)
+  }
+
 
   return (
     <ScrollView style={styles.container}>
@@ -67,11 +79,16 @@ export default function RubberDuckies() {
         <Text style={styles.title}>Add Your Rubber Ducky</Text>
         <Text style={styles.subtitle}>Tell us about your favorite rubber ducky!</Text>
         <Button title="Open Date Picker" ></Button>
-        <DateTimePicker
+
+        <Image source={{uri: 'file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fexpo-example-69405bae-1049-4e71-9239-7fba5d648d32/ImagePicker/518bee68-993b-4a3a-8ac8-3782c986bd42.jpeg'}} style={{width: 100, height: 100}} />
+        {/* <DateTimePicker
           mode="date"
           value={new Date()} 
           onChange = {(change) => console.log(change)}
-          />
+          /> */}
+
+        <Button title="Pick an image from camera roll" onPress={openImagePicker}/>
+        
 
         
         <View style={styles.fieldContainer}>
