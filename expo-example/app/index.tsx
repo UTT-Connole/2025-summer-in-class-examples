@@ -35,6 +35,7 @@ export default function Index() {
       
       <View style={styles.view}>
         <Link href={{pathname: '/lora', params: {lastname: "Klein"}}}>Go to Lora Page</Link>
+        <Link href={{pathname: '/shopping-list'}}>Go to Shopping Page</Link>
       <TextInput placeholder="hello everyone"></TextInput>
       <Text>{orientationName}</Text>
       <Text>{orientation}</Text>
