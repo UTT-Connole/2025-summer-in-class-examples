@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import validateField from '@/utils/validateField';
 
 interface ValidationErrors {
   name?: string;
@@ -21,42 +22,12 @@ export default function RubberDuckies() {
     color: false
   });
 
-  const validateField = (fieldName: string, value: string): string | undefined => {
-    switch (fieldName) {
-      case 'name':
-        if (!value.trim()) return 'Name is required';
-        if (value.length < 2) return 'Name must be at least 2 characters';
-        if (value.length > 50) return 'Name must be less than 50 characters';
-        return undefined;
-      
-      case 'type':
-        if (!value.trim()) return 'Type is required';
-        const validTypes = ['classic', 'superhero', 'animal', 'character', 'sports', 'holiday'];
-        if (!validTypes.includes(value.toLowerCase())) {
-          return 'Type must be one of: classic, superhero, animal, character, sports, holiday';
-        }
-        return undefined;
-      
-      case 'color':
-        if (!value.trim()) return 'Color is required';
-        const colorPattern = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$|^[a-zA-Z]+$/;
-        if (!colorPattern.test(value)) {
-          return 'Color must be a valid color name or hex code (e.g., "yellow" or "#FFD700")';
-        }
-        return undefined;
-      
-      default:
-        return undefined;
-    }
-  };
-
   const handleInputChange = (fieldName: string, value: string) => {
     setFormData(prev => ({
       ...prev,
       [fieldName]: value
     }));
 
-    // Real-time validation
     const error = validateField(fieldName, value);
     setErrors(prev => ({
       ...prev,
@@ -93,7 +64,6 @@ export default function RubberDuckies() {
         <Text style={styles.title}>Add Your Rubber Ducky</Text>
         <Text style={styles.subtitle}>Tell us about your favorite rubber ducky!</Text>
 
-        {/* Name Field */}
         <View style={styles.fieldContainer}>
           <Text style={styles.label}>Ducky Name *</Text>
           <TextInput
@@ -112,7 +82,6 @@ export default function RubberDuckies() {
           )}
         </View>
 
-        {/* Type Field */}
         <View style={styles.fieldContainer}>
           <Text style={styles.label}>Ducky Type *</Text>
           <TextInput
@@ -134,7 +103,6 @@ export default function RubberDuckies() {
           )}
         </View>
 
-        {/* Color Field */}
         <View style={styles.fieldContainer}>
           <Text style={styles.label}>Ducky Color *</Text>
           <TextInput
@@ -156,7 +124,6 @@ export default function RubberDuckies() {
           )}
         </View>
 
-        {/* Form Status */}
         <View style={styles.statusContainer}>
           <TouchableOpacity 
             style={[styles.button, isFormValid() ? styles.buttonValid : styles.buttonDisabled]}
