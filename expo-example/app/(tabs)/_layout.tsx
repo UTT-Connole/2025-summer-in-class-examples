@@ -18,18 +18,18 @@ const Tabs = withLayoutContext<
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: "blue" }}>
+    <Tabs>
       <Tabs.Screen
         name="dogs"
         options={{
-          title: "Home",
+          title: "Dog",
           tabBarIcon: () => ({ sfSymbol: "dog" }),
         }}
       />
       <Tabs.Screen
         name="cats"
         options={{
-          title: "Settings",
+          title: "Cat",
           tabBarIcon: () => ({ sfSymbol: "cat" }),
         }}
       />
