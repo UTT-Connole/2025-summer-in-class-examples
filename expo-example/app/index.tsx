@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, ScrollView, TextInput} from "react-native";
+import { Text, View, StyleSheet, ScrollView, TextInput} from "react-native"
 import { useEffect, useState } from "react";
 import { Link } from "expo-router";
 import * as ScreenOrientation from 'expo-screen-orientation';
@@ -41,6 +41,9 @@ export default function Index() {
       <View style={styles.view}>
         <Link href={{pathname: '/lora', params: {lastname: "Klein"}}}>
           <Text>Go to Lora Page</Text>
+        </Link>
+        <Link href={{pathname: '/dog-pics'}}>
+          <Text>Go to Dog Pictures</Text>
         </Link>
         <Link href={{pathname: '/shopping-list'}}>
           <Text>Go to Shopping Page</Text>
