@@ -134,6 +134,9 @@ export default function RubberDuckies() {
             <Text style={styles.successText}>✓ Color is valid!</Text>
           )}
         </View>
+        {isFormValid() && (
+          <Text style={styles.successText}>All fields are valid!</Text>
+        )}
 
         <View style={styles.statusContainer}>
           <TouchableOpacity 
@@ -144,6 +147,7 @@ export default function RubberDuckies() {
               {isFormValid() ? '✓ Form Complete' : 'Complete All Fields'}
             </Text>
           </TouchableOpacity>
+
         </View>
       </View>
     </ScrollView>
