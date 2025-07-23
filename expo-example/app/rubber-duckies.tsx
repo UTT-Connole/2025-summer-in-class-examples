@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Button, Image } from 'react-native';
-import validateField from '@/utils/validateField';
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 import * as ImagePicker from 'expo-image-picker';
+import useRubberDuckForm from '@/hooks/useRubberDuckForm';
 
 
 interface ValidationErrors {
@@ -14,42 +14,26 @@ interface ValidationErrors {
 }
 
 export default function RubberDuckies() {
-  const [formData, setFormData] = useState({
-    name: '',
-    type: '',
-    color: ''
-  });
+
+  const {
+    formData,
+    isFormValid,
+    handleInputChange,
+    errors
+  } = useRubberDuckForm()
   
-  const [errors, setErrors] = useState<ValidationErrors>({});
   const [touched, setTouched] = useState({
     name: false,
     type: false,
     color: false
   });
 
-  const handleInputChange = (fieldName: string, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [fieldName]: value
-    }));
-
-    const error = validateField(fieldName, value);
-    setErrors(prev => ({
-      ...prev,
-      [fieldName]: error
-    }));
-  };
 
   const handleBlur = (fieldName: string) => {
     setTouched(prev => ({
       ...prev,
       [fieldName]: true
     }));
-  };
-
-  const isFormValid = () => {
-    return Object.values(errors).every(error => !error) && 
-           Object.values(formData).every(value => value.trim() !== '');
   };
 
   const getInputStyle = (fieldName: string) => {
